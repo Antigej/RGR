@@ -103,14 +103,13 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
 .dot {width: 12px; height: 12px; background: rgba(255, 255, 255, 0.4); border-radius: 50%; cursor: pointer; transition: background 0.3s;}
 .dot.active-dot {background: #f59e0b; width: 24px; border-radius: 6px;}
 /* ==========================================================================
-   9. МЕДІА-ЗАПИТИ ДЛЯ АДАПТИВНОСТІ (ПОВНЕ ПЕРЕГЕНЕРУВАННЯ)
+   9. МЕДІА-ЗАПИТИ ДЛЯ АДАПТИВНОСТІ (СУВОРИЙ БЛОЧНИЙ РЕЖИМ ДЛЯ СМАРТФОНІВ)
    ========================================================================== */
-
 @media (max-width: 768px) {
     
-    /* 1. ШАПКА: ПОВНЕ РУЙНУВАННЯ ФЛЕКСУ ДЛЯ ТЕЛЕФОНІВ */
+    /* 1. ШАПКА: ПОВНЕ РУЙНУВАННЯ ФЛЕКСУ (ЛОГОТИП СУВОРО НАД МЕНЮ) */
     header .container {
-        display: block !important; /* Перетворюємо на звичайний вертикальний потік */
+        display: block !important; 
         height: auto !important;
         padding: 15px 10px !important;
         text-align: center !important;
@@ -118,28 +117,30 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
     
     .logo {
         display: block !important;
-        margin: 0 auto 12px auto !important; /* Чіткий відступ знизу, щоб відштовхнути меню */
+        margin: 0 auto 12px auto !important; /* Відступ знизу, щоб відштовхнути меню */
         text-align: center !important;
     }
     
     .nav-menu {
-        display: block !important; /* Меню більше не флекс, елементи будуть переноситися */
+        display: block !important; 
         width: 100% !important;
         padding: 0 !important;
         text-align: center !important;
     }
     
     .nav-menu li {
-        display: inline-block !important; /* Пункти меню стають акуратними кнопками в ряд */
+        display: inline-block !important; /* Пункти меню стають акуратними кнопками в один ряд */
         margin: 5px 8px !important;
     }
     
     .nav-menu a {
         font-size: 15px !important;
         white-space: nowrap !important;
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
     }
 
-    /* 2. СЛАЙДЕР: ЖОРСТКИЙ ЗАХИСТ ВІД НАПОЛЗАННЯ ТЕКСТУ */
+    /* 2. СЛАЙДЕР АНОНСІВ: ЗАХИСТ ВІД НАПОЛЗАННЯ ВЕЛИКОГО ТЕКСТУ */
     .main-slider {
         height: 260px !important;
         margin-bottom: 25px !important;
@@ -148,7 +149,7 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
     
     .slide-content {
         position: absolute !important;
-        bottom: 10px !important;
+        bottom: 15px !important;
         top: auto !important;
         left: 15px !important;
         right: 15px !important;
@@ -158,30 +159,38 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
     .slide-content h2 {
         font-size: 18px !important;
         margin-bottom: 4px !important;
+        line-height: 1.2 !important;
     }
     
     .slide-content p {
         font-size: 12px !important;
+        line-height: 1.3 !important;
         display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important; /* Обрізає опис до двох рядків, щоб не розпирав слайд */
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
     }
+    
+    .slider-nav {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 14px !important;
+    }
 
-    /* 3. ПРЕДМЕТИ ТА НОВИНИ: ПЕРЕХІД НА ЧИСТИЙ БЛОЧНИЙ ВИГЛЯД */
+    /* 3. ПРЕДМЕТИ ТА НОВИНИ: ПЕРЕХІД НА ВЕРТИКАЛЬНИЙ СТОВПЧИК БЕЗ СТИСКАННЯ */
     .subjects-grid, .required-grid, .news-grid, #main-news-preview .news-grid {
-        display: block; /* Скасовуємо Grid та Flexbox, що злипалися */
+        display: block !important; /* Вимикаємо Flex/Grid, через які картки злипалися в лінію */
         width: 100% !important;
         height: auto !important;
     }
 
-    .news-grig-mainpage{display: block !important;}
-
-    /* Кожна картка стає повністю незалежним поверхом */
+    /* Кожна картка отримує 100% ширини і росте вниз індивідуально */
     .subject-card, .news-card, #main-news-preview .news-card {
+        display: block !important; 
         width: 100% !important;
         max-width: 100% !important;
         height: auto !important;
-        margin-bottom: 20px !important; /* Відступ між картками */
+        margin-bottom: 20px !important; /* Відступ між сусідніми картками */
         padding: 20px !important;
         box-sizing: border-box !important;
     }
@@ -190,17 +199,17 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
         margin-top: 10px !important;
     }
 
-    /* 4. МОБІЛЬНА КАPУСЕЛЬ */
+    /* 4. МОБІЛЬНА КАPУСЕЛЬ ВИБІРКОВИХ ПРЕДМЕТІВ */
     .choice-slider-track .choice-card {
         flex: 0 0 100% !important;
     }
     .arrow-left { left: -5px; }
     .arrow-right { right: -5px; }
 
-    /* 5. ТАБЛИЦІ ТА КОНТАКТИ */
+    /* 5. ТАБЛИЦІ ІНФОГРАФІКИ ТА СТОРІНКА КОНТАКТІВ */
     section { 
         padding: 15px !important; 
-        overflow-x: auto !important; 
+        overflow-x: auto !important; /* Дозволяє гортати великі таблиці вбік */
     }
     
     .info-table th, .info-table td { 
@@ -209,7 +218,7 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
     }
     
     .contacts-wrapper { 
-        display: block !important; /* Карта падає під текст на 100% */
+        display: block !important; /* Карта гарантовано падає під блок тексту */
     }
     
     .contacts-info {
