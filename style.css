@@ -105,87 +105,91 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
 /* ==========================================================================
    9. МЕДІА-ЗАПИТИ ДЛЯ АДАПТИВНОСТІ (ПОВНЕ ПЕРЕГЕНЕРУВАННЯ)
    ========================================================================== */
+/* ==========================================================================
+   9. МЕДІА-ЗАПИТИ ДЛЯ АДАПТИВНОСТІ (СУВОРИЙ БЛОЧНИЙ РЕЖИМ)
+   ========================================================================== */
 @media (max-width: 768px) {
     
-    /* 1. ПРИМУСОВИЙ ПЕРЕНЕСЕННЯ МЕНЮ ПІД ЛОГОТИП */
+    /* 1. ШАПКА: ПОВНЕ РУЙНУВАННЯ ФЛЕКСУ ДЛЯ ТЕЛЕФОНІВ */
     header .container {
-        flex-direction: column !important;
+        display: block !important; /* Перетворюємо на звичайний вертикальний потік */
         height: auto !important;
         padding: 15px 10px !important;
-        gap: 12px !important;
+        text-align: center !important;
     }
     
     .logo {
-        margin: 0 auto !important;
         display: block !important;
+        margin: 0 auto 12px auto !important; /* Чіткий відступ знизу, щоб відштовхнути меню */
         text-align: center !important;
     }
     
     .nav-menu {
+        display: block !important; /* Меню більше не флекс, елементи будуть переноситися */
         width: 100% !important;
-        justify-content: center !important;
-        gap: 12px !important;
-        flex-wrap: wrap !important; /* Якщо кнопки не вміщатимуться, вони м'яко перенесуться */
         padding: 0 !important;
+        text-align: center !important;
+    }
+    
+    .nav-menu li {
+        display: inline-block !important; /* Пункти меню стають акуратними кнопками в ряд */
+        margin: 5px 8px !important;
     }
     
     .nav-menu a {
         font-size: 15px !important;
-        border-bottom: none !important;
-        padding-bottom: 0 !important;
+        white-space: nowrap !important;
     }
 
-    /* 2. ЖОРСТКИЙ КОНТРОЛЬ ТЕKСТУ СЛАЙДЕРА (ЗАХИСТ ВІД НАПОЛЗАННЯ) */
+    /* 2. СЛАЙДЕР: ЖОРСТКИЙ ЗАХИСТ ВІД НАПОЛЗАННЯ ТЕКСТУ */
     .main-slider {
-        height: 260px !important; /* Зменшена висота, щоб текст не мав фізичної можливості лізти вгору */
-        margin-bottom: 75px !important;
+        height: 260px !important;
+        margin-bottom: 25px !important;
+        display: block !important;
     }
     
     .slide-content {
         position: absolute !important;
-        bottom: 15px !important; /* Текст суворо притиснутий до нижнього краю слайда */
-        top: auto !important;    /* Скидаємо будь-які верхні обмеження */
+        bottom: 10px !important;
+        top: auto !important;
         left: 15px !important;
         right: 15px !important;
         padding: 0 !important;
     }
     
     .slide-content h2 {
-        font-size: 18px !important; /* Компактний розмір заголовка на телефоні */
+        font-size: 18px !important;
         margin-bottom: 4px !important;
-        line-height: 1.2 !important;
     }
     
     .slide-content p {
         font-size: 12px !important;
-        line-height: 1.3 !important;
         display: -webkit-box !important;
-        -webkit-line-clamp: 2 !important; /* Обрізає опис до двох рядків, щоб він не розпирав слайд */
+        -webkit-line-clamp: 2 !important;
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
     }
-    
-    .slider-nav {
-        width: 32px !important;
-        height: 32px !important;
-        font-size: 14px !important;
-    }
 
-    /* 3. ВИРІВНЮВАННЯ КАРТОК ПРЕДМЕТІВ ТА НОВИН В ОДИН СТОВПЧИК */
+    /* 3. ПРЕДМЕТИ ТА НОВИНИ: ПЕРЕХІД НА ЧИСТИЙ БЛОЧНИЙ ВИГЛЯД */
     .subjects-grid, .required-grid, .news-grid, #main-news-preview .news-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 15px !important;
+        display: block !important; /* Скасовуємо Grid та Flexbox, що злипалися */
         width: 100% !important;
+        height: auto !important;
     }
 
+    /* Кожна картка стає повністю незалежним поверхом */
     .subject-card, .news-card, #main-news-preview .news-card {
+        display: block !important; 
         width: 100% !important;
         max-width: 100% !important;
-        height: auto !important; /* Картки ростуть тільки вниз від тексту, не злипаючись */
-        min-height: 150px !important;
-        padding: 15px !important;
+        height: auto !important;
+        margin-bottom: 20px !important; /* Відступ між картками */
+        padding: 20px !important;
         box-sizing: border-box !important;
+    }
+    
+    .subject-card h3, .news-card h3 {
+        margin-top: 10px !important;
     }
 
     /* 4. МОБІЛЬНА КАPУСЕЛЬ */
@@ -207,8 +211,11 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
     }
     
     .contacts-wrapper { 
-        flex-direction: column !important; 
-        gap: 20px !important; 
+        display: block !important; /* Карта падає під текст на 100% */
+    }
+    
+    .contacts-info {
+        margin-bottom: 20px !important;
     }
     
     .contacts-map { 
