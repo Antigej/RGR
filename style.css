@@ -169,7 +169,7 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
 
     /* 3. ПРЕДМЕТИ ТА НОВИНИ: ПЕРЕХІД НА ЧИСТИЙ БЛОЧНИЙ ВИГЛЯД */
     .subjects-grid, .required-grid, .news-grid, #main-news-preview .news-grid {
-        display: block !important; /* Скасовуємо Grid та Flexbox, що злипалися */
+        display: block; /* Скасовуємо Grid та Flexbox, що злипалися */
         width: 100% !important;
         height: auto !important;
     }
