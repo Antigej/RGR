@@ -4,11 +4,43 @@
     margin: 0;
     padding: 0;
 }
+/* 1. Налаштування Flexbox для всього екрана */
+html, body {
+    height: 100%; /* Розтягуємо сторінку на всю висоту вікна */
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background-color: #f4f6f9;
     color: #333;
+    
+    /* Перетворюємо body на вертикальний Flex-контейнер */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Налаштування головного контенту */
+main.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    /* Ця властивість змушує контент займати весь вільний простір, 
+       притискаючи футер до самого низу */
+    flex: 1 0 auto; 
+}
+
+/* 3. Оновлений підвал сайту */
+footer {
+    background-color: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 20px 0;
+    
+    /* Забороняємо футеру стискатися */
+    flex-shrink: 0; 
 }
 .container {
     width: 100%;
