@@ -7,6 +7,8 @@
 /* 1. Налаштування Flexbox для всього екрана */
 html, body {
     height: 100%; /* Розтягуємо сторінку на всю висоту вікна */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -440,8 +442,7 @@ footer {
 .main-slider {
     position: relative;
     width: 100%;
-    height: 600px; /* Висота слайдера на десктопі */
-    overflow: hidden;
+    height: 450px; /* Висота слайдера на десктопі */
     margin-bottom: 40px;
     background-color: #1e293b;
 }
