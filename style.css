@@ -174,6 +174,8 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
         height: auto !important;
     }
 
+    .news-grig-mainpage{display: block !important;}
+
     /* Кожна картка стає повністю незалежним поверхом */
     .subject-card, .news-card, #main-news-preview .news-card {
         width: 100% !important;
