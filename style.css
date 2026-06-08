@@ -247,7 +247,9 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
 .resources-box h3 {color: #b45309; margin-bottom: 15px;}
 .btn-group {display: flex; gap: 15px; flex-wrap: wrap; margin-top: 15px;}
 .btn-resource {display: inline-block; background-color: #d97706; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 14px; transition: background-color 0.2s;}
+.btn-resource-download {display: inline-block; background-color: #059669; color: #ffffff; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 14px; transition: background-color 0.2s;}
 .btn-resource:hover {background-color: #b45309;}
+.btn-resource-download:hover {background-color: #047350;}
 .btn-resource.secondary {background-color: #475569;}
 .btn-resource.secondary:hover {background-color: #334155;}
 /* КАРКАС РОЗДІЛУ КОНТАКТІВ (2 колонки) */

@@ -258,7 +258,7 @@
         </div>
     </footer>
 
-    <!-- JS СКРИПТ ДЛЯ ПЕРЕМИКАННЯ СТОРІНОК -->
+    <!-- ФІНАЛЬНИЙ СКРИПТ ПАГІНАЦІЇ ЗІ СКРОЛОМ НА САМУ ГОРА СТОРІНКИ -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const cards = document.querySelectorAll(".news-card");
@@ -281,7 +281,8 @@
                     }
                 });
 
-                document.getElementById("news").scrollIntoView({ behavior: "smooth" });
+                // ФІКС: Плавно переміщує користувача на саму гору вікна браузера
+                window.scrollTo({ top: 0, behavior: "smooth" });
             }
 
             buttons.forEach(button => {
