@@ -163,7 +163,6 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
     .slide-content p {
         font-size: 12px !important;
         display: -webkit-box !important;
-        -webkit-line-clamp: 2 !important;
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
     }
