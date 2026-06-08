@@ -545,12 +545,101 @@ footer {
     border-radius: 6px;
 }
 
-/* Адаптивність під мобільні */
+/* ==========================================================================
+   9. МЕДІА-ЗАПИТИ ДЛЯ АДАПТИВНОСТІ (МОБІЛЬНА ВЕРСТКА СМАРТФОНІВ)
+   ========================================================================== */
 @media (max-width: 768px) {
-    .main-slider { height: 300px; }
-    .slide-content h2 { font-size: 22px; }
-    .slide-content p { font-size: 14px; }
-    .slider-nav { width: 35px; height: 35px; font-size: 16px; }
+    /* 1. Виправлення Хедера: меню під логотипом в один-два рядки */
+    header .container {
+        flex-direction: column;
+        height: auto;
+        padding: 12px 15px;
+        gap: 12px;
+    }
+    .nav-menu {
+        width: 100%;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap; /* Захист від вилізання вкладок за екран */
+    }
+    .nav-menu a {
+        font-size: 14px;
+    }
+
+    /* 2. Виправлення Слайдера: примусове відображення та зменшення висоти */
+    .main-slider {
+        display: block !important; /* Гарантує, що слайдер не зникне */
+        height: 280px !important;   /* Компактна висота під екран смартфона */
+        margin-bottom: 25px;
+    }
+    .slider-track, .slide, .slide img {
+        height: 100% !important;
+    }
+    .slide-content {
+        bottom: 25px;
+        left: 15px;
+        right: 15px;
+        padding: 0;
+    }
+    .slide-content h2 {
+        font-size: 19px;
+    }
+    .slide-content p {
+        font-size: 13px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Обрізає задовгий опис слайда до двох рядків */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .slider-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    /* 3. Виправлення Новин та Секцій: текст більше не вилізає за рамки */
+    section {
+        padding: 15px;
+        word-wrap: break-word; /* Примусове перенесення довгих слів */
+        overflow-x: auto;      /* Дозволяє гортати таблиці, якщо вони не влазять */
+    }
+    .news-grid {
+        grid-template-columns: 1fr !important; /* Новини строго в один стовпчик */
+        gap: 15px;
+    }
+    .news-card {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+    .info-table th, .info-table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    /* 4. Виправлення Предметів: блоки більше не з'їжджають */
+    .subjects-grid, .required-grid {
+        grid-template-columns: 1fr !important; /* Картки предметів стають одна під одну */
+        gap: 15px;
+    }
+    .choice-slider-track .choice-card {
+        flex: 0 0 100% !important; /* Кожна варіативна картка займає повну ширину */
+    }
+    .slider-arrow {
+        width: 35px;
+        height: 35px;
+    }
+    .arrow-left { left: -5px; }
+    .arrow-right { right: -5px; }
+
+    /* 5. Перебудова контактів */
+    .contacts-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .contacts-map {
+        height: 250px;
+        width: 100%;
+    }
 }
 
 /* СТИЛІ ДЛЯ СТОРІНКИ "ПРО НАС" */
