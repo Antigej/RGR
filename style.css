@@ -103,53 +103,48 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
 .dot.active-dot {background: #f59e0b; width: 24px; border-radius: 6px;}
    9. МЕДІА-ЗАПИТИ ДЛЯ АДАПТИВНОСТІ (МОБІЛЬНА ВЕРСТКА СМАРТФОНІВ)
 @media (max-width: 768px) {
-    header .container {flex-direction: column; height: auto; padding: 12px 15px; gap: 12px;}
-    header .container {flex-direction: column; height: auto; padding: 15px 20px; gap: 10px;}
-    .nav-menu {gap: 15px;}
-    .nav-menu {width: 100%; justify-content: center; gap: 12px; flex-wrap: wrap;}
-    .nav-menu a {font-size: 14px;}
-    /* 2. Виправлення Слайдера: примусове відображення та зменшення висоти */
-    /* ГОЛОВНИЙ ФІКС ДЛЯ МОБІЛЬНОГО СЛАЙДЕРА */
-    .main-slider {
-        display: block !important;
-        width: 100% !important;
-        height: 250px !important; /* Трохи зменшимо висоту для мобільних екранів */
-        overflow: hidden !important;
+    /* ВИПРАВЛЕННЯ ШАПКИ: ЛОГОТИП СУВОРО НАД МЕНЮ */
+    header {
+        position: relative !important; /* Знімаємо sticky на мобілці, щоб не заважало */
     }
 
-    .slider-track {
+    header .container {
         display: flex !important;
-        width: 100% !important;
-        height: 100% !important;
+        flex-direction: column !important; /* Переносить меню ПІД логотип */
+        justify-content: center !important;
+        align-items: center !important;
+        height: auto !important;           /* Авто-висота, щоб вмістити два рядки */
+        padding: 15px 10px !important;
+        gap: 15px !important;              /* Відступ між логотипом та пунктами меню */
     }
 
-    .slide {
-        min-width: 100% !important; /* Примусово розгортає слайд на весь екран смартфона */
-        width: 100% !important;
-        height: 100% !important;
-        flex-shrink: 0 !important;   /* ГАРАНТУЄ, що телефон не буде стискати слайди по ширині */
+    .logo {
+        display: block !important;
+        text-align: center !important;
+        margin: 0 auto !important;
     }
 
-    .slide img {
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row !important;    /* Самі пункти меню залишаються в один рядок */
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 15px !important;              /* Відступи між кнопками меню */
         width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
+        padding: 0 !important;
+        list-style: none !important;
     }
 
-    /* Зменшуємо шрифти тексту поверх фото на телефоні, щоб вони влазили */
-    .slide-content {
-        bottom: 20px !important;
-        left: 15px !important;
-        right: 15px !important;
-    }
-    .slide-content h2 {
-        font-size: 18px !important;
-        margin-bottom: 5px !important;
-    }
-    .slide-content p {
-        font-size: 12px !important;
-        line-height: 1.3 !important;
-    }    .slider-nav {width: 35px; height: 35px; font-size: 14px;}
+    .nav-menu a {
+        font-size: 15px !important;        /* Компактний розмір для телефонів */
+        white-space: nowrap !important;    /* Забороняє перенори слів у кнопках */
+    }    /* 2. Виправлення Слайдера: примусове відображення та зменшення висоти */
+    .main-slider {display: block !important; height: 280px !important; margin-bottom: 25px;}
+    .slider-track, .slide, .slide img {height: 100% !important;}
+    .slide-content {bottom: 25px; left: 15px; right: 15px; padding: 0;}
+    .slide-content h2 {font-size: 19px;}
+    .slide-content p {font-size: 13px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
+    .slider-nav {width: 35px; height: 35px; font-size: 14px;}
     /* 3. Виправлення Новин та Секцій: текст більше не вилізає за рамки */
     section {padding: 15px; word-wrap: break-word; overflow-x: auto;}
     .news-grid {grid-template-columns: 1fr !important; gap: 15px;}
