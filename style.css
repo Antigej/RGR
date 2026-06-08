@@ -256,4 +256,514 @@ footer {
 .news-btn:hover {
     color: #1d4ed8;
 }
+/* Перетворення карток предметів на великі блоки */
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.subject-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.subject-card h3 {
+    font-size: 20px;
+    color: #1e293b;
+    margin-bottom: 15px;
+}
+
+/* Статус предмета (обов'язковий / на вибір) */
+.subject-status {
+    display: inline-block;
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.status-required {
+    background-color: #fee2e2;
+    color: #ef4444;
+}
+.status-choice {
+    background-color: #e0f2fe;
+    color: #0284c7;
+}
+
+/* Кнопка переходу до деталей предмета */
+.subject-link {
+    display: block;
+    background-color: #1e293b;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+.subject-link:hover {
+    background-color: #334155;
+}
+
+/* Ввідний інформаційний блок під картками */
+.subjects-info-block {
+    background-color: #f8fafc;
+    border-left: 4px solid #f59e0b;
+    padding: 20px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 30px;
+}
+.subjects-info-block h4 {
+    color: #1e293b;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.subjects-info-block ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.subjects-info-block li {
+    margin-bottom: 5px;
+}
+/* Контейнер для слайдера предметів */
+.choice-slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 30px 0;
+}
+
+/* Вікно відображення, яке ховає картки, що виходять за межі */
+.choice-slider-viewport {
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 5px;
+}
+
+/* Довгий рядок, у якому шикуються всі картки */
+.choice-slider-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Стиль картки вибіркового предмета */
+.choice-card {
+    flex: 0 0 calc(33.333% - 14px); /* Попередня розмірність: 3 картки в ряд на десктопі */
+    min-width: 280px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.choice-card h3 {
+    font-size: 18px;
+    color: #1e293b;
+    margin-bottom: 12px;
+}
+
+.choice-card p {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+/* Кнопки-стрілки керування слайдером */
+.slider-arrow {
+    background-color: #1e293b;
+    color: #ffffff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.slider-arrow:hover {
+    background-color: #f59e0b;
+}
+
+.slider-arrow:disabled {
+    background-color: #cbd5e1;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.arrow-left { left: -50px; }
+.arrow-right { right: -50px; }
+
+/* Адаптивність для планшетів та телефонів */
+@media (max-width: 992px) {
+    .choice-card { flex: 0 0 calc(50% - 10px); } /* 2 картки в ряд */
+    .arrow-left { left: -20px; }
+    .arrow-right { right: -20px; }
+}
+
+@media (max-width: 600px) {
+    .choice-card { flex: 0 0 100%; } /* 1 картка в ряд */
+}
+/* КАРКАС СЛАЙДЕРА */
+.main-slider {
+    position: relative;
+    width: 100%;
+    height: 600px; /* Висота слайдера на десктопі */
+    overflow: hidden;
+    margin-bottom: 40px;
+    background-color: #1e293b;
+}
+
+.slider-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+/* ОКРЕМІ СЛАЙДИ */
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Фото заповнює слайд без деформації */
+    filter: brightness(60%); /* Затемнення фото для читабельності тексту */
+}
+
+/* ТЕКСТ ПОВЕРХ ФОТО */
+.slide-content {
+    position: absolute;
+    bottom: 50px;
+    left: 10%;
+    right: 10%;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    z-index: 5;
+}
+
+.slide-content h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #f59e0b; /* Золотистий акцент на заголовок */
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.slide-content p {
+    font-size: 18px;
+    max-width: 800px;
+    line-height: 1.5;
+}
+
+/* СТРІЛКИ КЕРУВАННЯ */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(30, 41, 59, 0.6);
+    color: #ffffff;
+    border: none;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.slider-nav:hover {
+    background: #f59e0b;
+}
+
+.slider-prev { left: 20px; }
+.slider-next { right: 20px; }
+
+/* ТОЧКИ-ІНДИКАТОРИ ЗНИЗУ */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active-dot {
+    background: #f59e0b;
+    width: 24px; /* Робить активну точку довшою */
+    border-radius: 6px;
+}
+
+/* Адаптивність під мобільні */
+@media (max-width: 768px) {
+    .main-slider { height: 300px; }
+    .slide-content h2 { font-size: 22px; }
+    .slide-content p { font-size: 14px; }
+    .slider-nav { width: 35px; height: 35px; font-size: 16px; }
+}
+
+/* СТИЛІ ДЛЯ СТОРІНКИ "ПРО НАС" */
+.about-hero {
+    background-color: #f8fafc;
+    border-left: 5px solid #f59e0b;
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 0 8px 8px 0;
+}
+
+.about-hero p {
+    font-size: 18px;
+    color: #475569;
+    line-height: 1.7;
+}
+
+/* Сітка переваг (3 в ряд) */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.feature-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.feature-item h3 {
+    color: #1e293b;
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-item p {
+    font-size: 15px;
+    color: #64748b;
+}
+
+/* Вертикальний таймлайн (етапи підготовки) */
+.timeline {
+    margin: 30px 0;
+    padding-left: 20px;
+    border-left: 2px dashed #cbd5e1;
+}
+
+.timeline-step {
+    position: relative;
+    margin-bottom: 25px;
+    padding-left: 20px;
+}
+
+/* Крапочка на лінії */
+.timeline-step::before {
+    content: "";
+    position: absolute;
+    left: -27px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: #f59e0b;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.timeline-step h4 {
+    color: #1e293b;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.timeline-step p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* СТИЛІ ДЛЯ СТОРІНКИ КОНКРЕТНОГО ПРЕДМЕТА */
+.subject-header {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+.subject-header h2 {
+    color: #f59e0b;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 10px;
+}
+
+/* Стилізація таблиці критеріїв */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 30px 0;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.info-table th, .info-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+.info-table th {
+    background-color: #1e293b;
+    color: #ffffff;
+    font-weight: 600;
+}
+.info-table tr:last-child td {
+    border-bottom: none;
+}
+.info-table tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* Блок корисних ресурсів та кнопок */
+.resources-box {
+    background-color: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 30px;
+}
+.resources-box h3 {
+    color: #b45309;
+    margin-bottom: 15px;
+}
+.btn-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+.btn-resource {
+    display: inline-block;
+    background-color: #d97706;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+.btn-resource:hover {
+    background-color: #b45309;
+}
+.btn-resource.secondary {
+    background-color: #475569;
+}
+.btn-resource.secondary:hover {
+    background-color: #334155;
+}
+
+/* КАРКАС РОЗДІЛУ КОНТАКТІВ (2 колонки) */
+.contacts-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.contacts-info {
+    flex: 1 1 450px; /* Текстовий блок займає мінімум 450px, потім розширюється */
+}
+
+.contacts-info h3 {
+    color: #1e293b;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.contacts-info p {
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #475569;
+}
+
+/* СТИЛІЗАЦІЯ КАРТИ НА OPENSTREETMAP */
+.contacts-map {
+    flex: 1 1 450px;
+    height: 350px; /* Збільшена фіксована висота карти */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #e2e8f0;
+}
+
+.contacts-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Адаптивність під мобільні екрани */
+@media (max-width: 992px) {
+    .contacts-wrapper {
+        flex-direction: column; /* На смартфонах карта стане під текстом */
+        gap: 25px;
+    }
+    .contacts-map {
+        height: 280px;
+    }
+}
 

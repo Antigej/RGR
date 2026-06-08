@@ -8,6 +8,7 @@
 </head>
 <body>
 
+    <!-- ШАПКА САЙТУ -->
     <header>
         <div class="container">
             <a href="index.html" class="logo">НМТ<span>2026</span></a>
@@ -20,25 +21,133 @@
         </div>
     </header>
 
-    <div class="slider-placeholder">
-        <div class="container">
-            <h1>Інформаційний портал «Підготовка до НМТ 2026»</h1>
-            <p>Тут буде ваш інтерактивний слайдер зображень або головних анонсів</p>
+    <!-- ИНТЕРАКТИВНИЙ ГОРИЗОНТАЛЬНИЙ СЛАЙДЕР -->
+    <div class="main-slider">
+        <!-- Кнопки-стрілки -->
+        <button class="slider-nav slider-prev" id="btnPrev">&larr;</button>
+        <button class="slider-nav slider-next" id="btnNext">&rarr;</button>
+
+        <!-- Рядок зі слайдами -->
+        <div class="slider-track" id="mainTrack">
+            
+            <!-- Слайд 1 -->
+            <div class="slide">
+                <img src="https://plus.unsplash.com/premium_photo-1723291280862-e315f4ba74a2?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Старт підготовки">
+                <div class="slide-content">
+                    <h2>Старт реєстрації на НМТ 2026</h2>
+                    <p>Дізнайтеся про ключові етапи вступної кампанії, правила створення персональних кабінетів та терміни подачі документів для участі в тестуванні.</p>
+                </div>
+            </div>
+
+            <!-- Слайд 2 -->
+            <div class="slide">
+                <img src="https://plus.unsplash.com/premium_photo-1684330690104-655352de6b76?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Книги та навчання">
+                <div class="slide-content">
+                    <h2>Оновлені демонстраційні тести</h2>
+                    <p>Перевірте свої сили на безкоштовних онлайн-тренажерах. Усі завдання повністю відповідають чинним програмам Українського центру оцінювання якості освіти.</p>
+                </div>
+            </div>
+
+            <!-- Слайд 3 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1733824204474-e1b329a33612?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Студенти">
+                <div class="slide-content">
+                    <h2>Ефективні стратегії підготовки</h2>
+                    <p>Поради від провідних репетиторів та експертів: як правильно розподілити час між чотирма предметами, подолати стрес і скласти іспит на максимальний бал.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Точки індикатори -->
+        <div class="slider-dots" id="dotsContainer">
+            <span class="dot active-dot" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
         </div>
     </div>
 
+    <!-- ГОЛОВНИЙ КОНТЕНТ -->
     <main class="container">
         <section>
-            <h2>Вітаємо на порталі!</h2>
-            <p>Цей ресурс створено для допомоги випускникам 2026 року в підготовці до складання Національного мультипредметного тесту.</p>
+            <h2>Вітаємо на інформаційному порталі!</h2>
+            <p>Цей вебресурс створено як надійний помічник для кожного випускника 2026 року. Тут зібрано все необхідне для успішного проходження Національного мультипредметного тесту: від офіційних регламентів до навчальних матеріалів.</p>
+            <p style="margin-top: 15px;">Скористайтеся навігаційним меню у шапці сайту, щоб перейти до інтерактивного каталогу предметів, свіжих новин освітньої сфери або переглянути контактну інформацію приймальних комісій.</p>
         </section>
     </main>
 
+    <!-- ПІДВАЛ -->
     <footer>
         <div class="container">
             <p>&copy; 2026 Портал НМТ. Всі права захищені.</p>
         </div>
     </footer>
 
+    <!-- СКРИПТ ДЛЯ АВТОМАТИЧНОГО ТА РУЧНОГО ПЕРЕГОРТАННЯ -->
+    <script>
+        const track = document.getElementById('mainTrack');
+        const prevBtn = document.getElementById('btnPrev');
+        const nextBtn = document.getElementById('btnNext');
+        const dots = document.querySelectorAll('.dot');
+        
+        let currentSlide = 0;
+        const totalSlides = dots.length;
+        const slideInterval = 5000; // Час показу слайда (5 секунд)
+        let autoSlideTimer;
+
+        // Функція перемикання на конкретний слайд
+        function updateSlider(index) {
+            currentSlide = index;
+            // Зсуваємо трек ліворуч на потрібну кількість відсотків
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Оновлюємо активну точку
+            dots.forEach(dot => dot.classList.remove('active-dot'));
+            dots[currentSlide].classList.add('active-dot');
+        }
+
+        // Функції для кнопок
+        function nextSlide() {
+            let nextIndex = (currentSlide + 1) % totalSlides;
+            updateSlider(nextIndex);
+        }
+
+        function prevSlide() {
+            let prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider(prevIndex);
+        }
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoSlide(); // Скидаємо таймер при ручному кліку
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoSlide();
+        });
+
+        // Кліки по точках
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                const targetIndex = parseInt(e.target.getAttribute('data-index'));
+                updateSlider(targetIndex);
+                resetAutoSlide();
+            });
+        });
+
+        // Автоматичне перегортання
+        function startAutoSlide() {
+            autoSlideTimer = setInterval(nextSlide, slideInterval);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideTimer);
+            startAutoSlide();
+        }
+
+        // Запуск при завантаженні сторінки
+        startAutoSlide();
+    </script>
 </body>
 </html>
