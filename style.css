@@ -641,18 +641,33 @@ footer {
         height: 250px;
         width: 100%;
     }
-        /* ФІКС БАГУ: Перебудова сітки новин на головній сторінці */
+    /* ПОВНИЙ ФІКС БАГУ ВИСОТИ ТА СТИСНЕННЯ НОВИН */
     #main-news-preview .news-grid {
         display: flex !important;
-        flex-direction: column !important; /* Розгортає картки строго одна під одну */
-        gap: 15px !important;
+        flex-direction: column !important; /* Картки стають вертикально */
+        gap: 20px !important;
         width: 100% !important;
+        height: auto !important; /* Скасовує будь-які обмеження висоти сітки */
     }
 
     #main-news-preview .news-card {
-        width: 100% !important; /* Картка займає всю ширину екрана смартфона */
+        width: 100% !important;
         max-width: 100% !important;
+        height: auto !important; /* Картка РОЗТЯГУЄТЬСЯ у висоту залежно від тексту */
+        min-height: 180px !important; /* Задає мінімальний поріг висоти, щоб картка не злипалася */
         box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 20px !important;
+    }
+
+    /* Переконуємося, що внутрішній текст новини не стискає картку */
+    #main-news-preview .news-card p {
+        display: block !important;
+        height: auto !important;
+        min-height: 50px !important;
+        margin-bottom: 15px !important;
+        flex-grow: 0 !important; /* Вимикає конфлікти автоматичного розрахунку */
     }
 }
 
