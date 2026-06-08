@@ -28,9 +28,9 @@ header {
 }
 header .container {
     display: flex;
-    justify-content: space-between; /* Логотип зліва, меню справа */
-    align-items: center;            /* Вирівнювання по вертикалі */
-    height: 70px;                   /* Фіксована висота шапки */
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
 }
 .logo {
     font-size: 24px;
@@ -39,12 +39,12 @@ header .container {
     color: #ffffff;
 }
 .logo span {
-    color: #f59e0b; /* Золотистий колір для акценту */
+    color: #f59e0b;
 }
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 20px; /* Відступи між пунктами */
+    gap: 20px;
 }
 .nav-menu a {
     color: #cbd5e1;
@@ -54,6 +54,14 @@ header .container {
 }
 .nav-menu a:hover {
     color: #ffffff;
+}
+
+/* Стиль для активного (вибраного) пункту меню */
+.nav-menu a.active {
+    color: #f59e0b;
+    font-weight: bold;
+    border-bottom: 2px solid #f59e0b;
+    padding-bottom: 4px;
 }
 
 /* 2. СЛАЙДЕР (ЗАГОТОВКА) */
@@ -129,7 +137,7 @@ footer {
 /* Адаптивність для мобільних пристроїв */
 @media (max-width: 768px) {
     header .container {
-        flex-direction: column; /* На мобілці логотип буде над меню */
+        flex-direction: column;
         height: auto;
         padding: 15px 20px;
         gap: 10px;
