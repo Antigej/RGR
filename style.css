@@ -178,3 +178,82 @@ footer {
         gap: 15px;
     }
 }
+
+/* Контейнер для сітки новин */
+.news-grid {
+    display: grid;
+    /* Автоматичний розрахунок: колонки будуть не менше 300px, заповнюючи весь простір */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px; /* Відступи між картками */
+    margin-top: 20px;
+}
+
+/* Стиль окремої картки новини */
+.news-card {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Ефект наведення на картку */
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Мета-дані новини (дата, категорія) */
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.news-badge {
+    background-color: #ef4444;
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.news-badge.info {
+    background-color: #3b82f6;
+}
+
+/* Заголовок та текст */
+.news-card h3 {
+    font-size: 18px;
+    color: #1e293b;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.news-card p {
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Текст займає весь вільний простір, вирівнюючи кнопку */
+}
+
+/* Кнопка "Читати далі" */
+.news-btn {
+    align-self: flex-start;
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.news-btn:hover {
+    color: #1d4ed8;
+}
+
