@@ -138,7 +138,7 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
     /* 2. ЖОРСТКИЙ КОНТРОЛЬ ТЕKСТУ СЛАЙДЕРА (ЗАХИСТ ВІД НАПОЛЗАННЯ) */
     .main-slider {
         height: 260px !important; /* Зменшена висота, щоб текст не мав фізичної можливості лізти вгору */
-        margin-bottom: auto !important;
+        margin-bottom: 75px !important;
     }
     
     .slide-content {
