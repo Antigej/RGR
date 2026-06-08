@@ -641,6 +641,19 @@ footer {
         height: 250px;
         width: 100%;
     }
+        /* ФІКС БАГУ: Перебудова сітки новин на головній сторінці */
+    #main-news-preview .news-grid {
+        display: flex !important;
+        flex-direction: column !important; /* Розгортає картки строго одна під одну */
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    #main-news-preview .news-card {
+        width: 100% !important; /* Картка займає всю ширину екрана смартфона */
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
 }
 
 /* СТИЛІ ДЛЯ СТОРІНКИ "ПРО НАС" */
