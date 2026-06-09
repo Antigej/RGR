@@ -260,40 +260,58 @@
 
     <!-- ФІНАЛЬНИЙ СКРИПТ ПАГІНАЦІЇ ЗІ СКРОЛОМ НА САМУ ГОРА СТОРІНКИ -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const cards = document.querySelectorAll(".news-card");
-            const buttons = document.querySelectorAll(".page-btn");
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".news-card");
+    const buttons = document.querySelectorAll(".page-btn");
 
-            function showPage(pageNumber) {
-                cards.forEach(card => {
-                    if (card.getAttribute("data-page") === pageNumber) {
-                        card.style.display = "flex";
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
+    // Перевірка, щоб код не падав, якщо елементів раптом немає на сторінці
+    if (!cards.length || !buttons.length) return;
 
-                buttons.forEach(btn => {
-                    if (btn.getAttribute("data-target") === pageNumber) {
-                        btn.classList.add("active-page");
-                    } else {
-                        btn.classList.remove("active-page");
-                    }
-                });
+    function showPage(pageNumber) {
+        const targetPage = String(pageNumber);
 
-                // ФІКС: Плавно переміщує користувача на саму гору вікна браузера
-                window.scrollTo({ top: 0, behavior: "smooth" });
+        cards.forEach(card => {
+            // Перевіряємо тільки ті картки, які належать нашій секції з пагінацією
+            if (card.closest("#news") && card.getAttribute("data-page") === targetPage) {
+                card.style.display = "flex"; 
+                
+                // Мікропауза для активації CSS-анімації fade-in
+                setTimeout(() => {
+                    card.classList.add("fade-in");
+                }, 10); 
+            } else {
+                card.classList.remove("fade-in");
+                card.style.display = "none";
             }
-
-            buttons.forEach(button => {
-                button.addEventListener("click", function() {
-                    const targetPage = this.getAttribute("data-target");
-                    showPage(targetPage);
-                });
-            });
-
-            showPage("1");
         });
+
+        // Перемикання активного класу для 4-х кнопок
+        buttons.forEach(btn => {
+            const isActive = btn.getAttribute("data-target") === targetPage;
+            btn.classList.toggle("active-page", isActive);
+        });
+
+        // Плавний скролл угору
+document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+document.body.scrollTo({ top: 0, behavior: "smooth" });    
+
+    }
+
+    // ОЖИВЛЯЄМО КНОПКИ: додаємо слухач подій на кожну з 4-х кнопок
+    buttons.forEach(button => {
+        button.addEventListener("click", function() {
+            const targetPage = this.getAttribute("data-target");
+            if (targetPage) {
+                showPage(targetPage);
+            }
+        });
+    });
+
+    // Запускаємо першу сторінку при завантаженні сайту
+    showPage("1");
+});
+
+
     </script>
 </body>
 </html>
