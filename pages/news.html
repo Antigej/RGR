@@ -257,61 +257,6 @@
             <p>&copy; 2026 Портал НМТ. Всі права захищені.</p>
         </div>
     </footer>
-
-    <!-- ФІНАЛЬНИЙ СКРИПТ ПАГІНАЦІЇ ЗІ СКРОЛОМ НА САМУ ГОРА СТОРІНКИ -->
-    <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".news-card");
-    const buttons = document.querySelectorAll(".page-btn");
-
-    // Перевірка, щоб код не падав, якщо елементів раптом немає на сторінці
-    if (!cards.length || !buttons.length) return;
-
-    function showPage(pageNumber) {
-        const targetPage = String(pageNumber);
-
-        cards.forEach(card => {
-            // Перевіряємо тільки ті картки, які належать нашій секції з пагінацією
-            if (card.closest("#news") && card.getAttribute("data-page") === targetPage) {
-                card.style.display = "flex"; 
-                
-                // Мікропауза для активації CSS-анімації fade-in
-                setTimeout(() => {
-                    card.classList.add("fade-in");
-                }, 10); 
-            } else {
-                card.classList.remove("fade-in");
-                card.style.display = "none";
-            }
-        });
-
-        // Перемикання активного класу для 4-х кнопок
-        buttons.forEach(btn => {
-            const isActive = btn.getAttribute("data-target") === targetPage;
-            btn.classList.toggle("active-page", isActive);
-        });
-
-        // Плавний скролл угору
-document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
-document.body.scrollTo({ top: 0, behavior: "smooth" });    
-
-    }
-
-    // ОЖИВЛЯЄМО КНОПКИ: додаємо слухач подій на кожну з 4-х кнопок
-    buttons.forEach(button => {
-        button.addEventListener("click", function() {
-            const targetPage = this.getAttribute("data-target");
-            if (targetPage) {
-                showPage(targetPage);
-            }
-        });
-    });
-
-    // Запускаємо першу сторінку при завантаженні сайту
-    showPage("1");
-});
-
-
-    </script>
+    <script src="other/scripts.js"></script>
 </body>
 </html>

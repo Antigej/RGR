@@ -114,43 +114,6 @@
                 <p>&copy; 2026 Портал НМТ. Всі права захищені.</p>
             </div>
         </footer>
-        <script>
-            const track = document.getElementById('sliderTrack');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            let position = 0;
-            function getSlideWidth() {
-                const card = document.querySelector('.choice-slider-track .choice-card');
-                const gap = 20; 
-                return card.offsetWidth + gap;
-            }
-            nextBtn.addEventListener('click', () => {
-                const slideWidth = getSlideWidth();
-                const maxScroll = track.scrollWidth - track.parentElement.offsetWidth;
-                position -= slideWidth;
-                if (Math.abs(position) >= maxScroll) {
-                    position = -maxScroll;
-                    nextBtn.disabled = true;
-                }
-                prevBtn.disabled = false;
-                track.style.transform = `translateX(${position}px)`;
-            });
-            prevBtn.addEventListener('click', () => {
-                const slideWidth = getSlideWidth();
-                position += slideWidth;
-                if (position >= 0) {
-                    position = 0;
-                    prevBtn.disabled = true;
-                }
-                nextBtn.disabled = false;
-                track.style.transform = `translateX(${position}px)`;
-            });
-            window.addEventListener('resize', () => {
-                position = 0;
-                track.style.transform = `translateX(0px)`;
-                prevBtn.disabled = true;
-                nextBtn.disabled = false;
-            });
-        </script>
+        <script src="other/scripts.js"></script>
     </body>
 </html>
