@@ -2,11 +2,146 @@
 /* 1. Налаштування Flexbox для всього екрана */
 html, body {height: 100%; scroll-behavior: smooth; overflow-x: hidden;}
 body {font-family: Arial, sans-serif; line-height: 1.6; background-color: #f4f6f9; color: #333; display: flex; flex-direction: column;}
+/* Універсальний клас для плавного підкреслення з центру */
+.link-animate {
+    position: relative !important;
+    text-decoration: none !important;
+    padding-bottom: 2px;
+    display: inline-block; /* Гарантує правильний розрахунок ширини лінії */
+}
+
+.link-animate::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: currentColor; /* Автоматично бере колір тексту посилання! */
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.link-animate:hover::after {
+    width: 100%;
+}
 /* 2. Налаштування головного контенту */
 main.container {width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; flex: 1 0 auto;}
 main.containernews {width: 100%; max-width: 1600px; margin: 0 auto; padding: 0 20px; flex: 1 0 auto;}
+
+/* ==========================================
+   СТИЛІЗАЦІЯ МЕНЮ ХЕДЕРА (ФІКС ФІОЛЕТОВОГО КОЛЬОРУ)
+========================================== */
+.main-menu {
+    display: flex !important;
+    gap: 20px !important; /* Робимо гарні відступи між пунктами */
+    align-items: center !important;
+}
+
+/* Задаємо базовий колір для всіх станів посилання */
+.main-menu a, 
+.main-menu a:visited {
+    color: #ffffff !important; /* Примусово робимо текст білим, навіть якщо посилання відвідане */
+    text-decoration: none !important;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Колір посилань при наведенні курсору */
+.main-menu a:hover {
+    color: #cbd5e1 !important; /* Легкий сірий колір при наведенні */
+}
+
+/* Активне посилання поточної сторінки (те, що підсвічує наш JS) */
+.main-menu a.active-menu-link,
+.main-menu a.active-menu-link:visited {
+    color: #f59e0b !important; /* Ваша фірмова помаранчева підсвітка */
+    font-weight: 700 !important;
+}
+
+/* Лінія підкреслення для активного пункту */
+.main-menu a.active-menu-link::after {
+    width: 100% !important;
+    background-color: #f59e0b !important;
+}
+
+
 /* 3. Оновлений підвал сайту */
-footer {background-color: #0f172a; color: #94a3b8; text-align: center; padding: 20px 0; flex-shrink: 0; }
+/* ==========================================
+   ОНОВЛЕНИЙ ФУТЕР З ЛОГОТИПОМ ЗЛІВА
+========================================== */
+footer {
+    background-color: #1e293b;
+    color: #cbd5e1;
+    padding: 30px 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+/* Контейнер розносить блоки по краях сторінки */
+.footer-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Стилі для логотипу у підвалі */
+.footer-logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+/* Помаранчевий або акцентний колір для року, як у вашому хедері */
+.footer-logo span {
+    color: #f59e0b; /* Можна замінити на точний колір з вашої шапки */
+    margin-left: 2px;
+}
+
+/* Правий блок з посиланнями та текстом */
+.footer-content {
+    text-align: right !important;
+}
+
+.footer-links {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-divider {
+    color: #475569;
+    font-size: 14px;
+}
+
+.footer-copy {
+    font-size: 14px;
+    color: #94a3b8;
+    margin: 0;
+}
+
 .container {width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px;}
 /* 1. ШАПКА В ОДИН РЯДОК (FLEXBOX) */
 header {background-color: #1e293b; color: #ffffff; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
@@ -17,7 +152,7 @@ header .container {display: flex; justify-content: space-between; align-items: c
 .nav-menu a {color: #cbd5e1; text-decoration: none; font-weight: 500; transition: color 0.3s;}
 .nav-menu a:hover {color: #ffffff;}
 /* Стиль для активного (вибраного) пункту меню */
-.nav-menu a.active {color: #f59e0b; font-weight: bold; border-bottom: 2px solid #f59e0b; padding-bottom: 4px;}
+.nav-menu a.active {color: #f59e0b; font-weight: bold; padding-bottom: 4px;}
 /* 2. СЛАЙДЕР (ЗАГОТОВКА) */
 .slider-placeholder {background-color: #334155; color: #ffffff; padding: 80px 20px; text-align: center; margin-bottom: 40px;}
 /* Стилі для секцій */
@@ -420,6 +555,27 @@ h2 {margin-bottom: 20px; color: #1e293b; border-bottom: 2px solid #e2e8f0; paddi
         height: 240px !important; 
         width: 100% !important; 
     }
+    .footer-container {
+        flex-direction: column !important; /* На телефонах усе стає в один рівний стовпчик */
+        gap: 20px !important;
+        text-align: center !important;
+    }
+
+    .footer-content {
+        text-align: center !important;
+        width: 100%;
+    }
+
+    .footer-links {
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 10px !important;
+    }
+
+    .footer-divider {
+        display: none !important; /* Прибираємо риски на мобільних */
+    }
+
 }
 .about-hero {background-color: #f8fafc; border-left: 5px solid #f59e0b; padding: 30px; margin-bottom: 40px; border-radius: 0 8px 8px 0;}
 .about-hero p {font-size: 18px; color: #475569; line-height: 1.7;}
