@@ -7,17 +7,24 @@
         <link rel="stylesheet" href="../../style.css">
     </head>
     <body>
-        <header>
-            <div class="container">
-                <a href="../../index.html" class="logo">НМТ<span>2026</span></a>
-                <ul class="nav-menu">
-                    <li><a href="../subjects.html" class="link-animate">Предмети</a></li>
-                    <li><a href="../aboutus.html" class="link-animate">Про нас</a></li>
-                    <li><a href="../news.html" class="active link-animate">Новини</a></li>
-                    <li><a href="../contacts.html" class="link-animate">Контакти</a></li>
-                </ul>
+<header>
+    <div class="container header-container">
+    <a href="index.html" class="logo">НМТ<span>2026</span></a>
+    <nav class="main-menu">
+        <div class="dropdown">
+            <a href="#" class="link-animate dropdown-toggle">Предмети <span class="dropdown-arrow">›</span></a>
+            <!-- Випадаюче віконце -->
+            <div class="dropdown-menu">
+                <a href="../subjects.html">Дисципліни</a>
+                <a href="../gallery.html">Медіагалерея</a>
             </div>
-        </header>
+        </div>
+        <a href="../aboutus.html" class="link-animate">Про нас</a>
+        <a href="../news.html" class="link-animate">Новини</a>
+        <a href="../contacts.html" class="link-animate">Контакти</a>
+    </nav>
+</div>
+</header>
         <main class="containernews" style="margin-top: 40px;">
             <section>
                 <h2>Новини порталу</h2>
@@ -213,22 +220,22 @@
         </main>
 <footer>
     <div class="container footer-container">
-        <!-- Логотип зліва -->
-        <a href="index.html" class="footer-logo">НМТ<span>2026</span></a>
-        
-        <!-- Блок посилань та копірайту по центру/справа -->
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://testportal.gov.ua" target="_blank" rel="noopener noreferrer" class="link-animate">УЦОЯО</a>
-                <span class="footer-divider">|</span>
-                <a href="https://mon.gov.ua" target="_blank" rel="noopener noreferrer" class="link-animate">МОН</a>
-                <span class="footer-divider">|</span>
-                <a href="https://osvita.ua" target="_blank" rel="noopener noreferrer" class="link-animate">Тести ЗНО/НМТ (Osvita.ua)</a>
-            </div>
-            <p class="footer-copy">&copy; 2026 Портал НМТ. Всі права захищені.</p>
+    <a href="index.html" class="footer-logo">НМТ<span>2026</span></a>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="https://testportal.gov.ua" target="_blank" class="link-animate">УЦОЯО</a>
+            <span class="footer-divider">|</span>
+            <a href="https://mon.gov.ua" target="_blank" class="link-animate">МОН</a>
+            <span class="footer-divider">|</span>
+            <a href="https://zno.osvita.ua" target="_blank" class="link-animate">Тести ЗНО/НМТ</a>
         </div>
+        <p class="footer-copy">&copy; 2026 Портал НМТ. Всі права захищені.</p>
     </div>
+</div>
+
 </footer>
+    <script src="jquery-4.0.0.min.js"></script>
+    <script src="shared.js"></script>
+    <script src="scripts.js"></script>
     </body>
 </html>
-

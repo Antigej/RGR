@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медіагалерея - Портал NMT</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header id="global-header"></header>
+
+    <main class="gallery-page-container">
+        <h1 class="gallery-main-title">Медіагалерея НМТ 2026</h1>
+        <p class="gallery-subtitle">Корисна інфографіка, розклад сесій та матеріали для успішної підготовки до цьогорічного тестування.</p>
+
+        <div class="gallery-grid">
+            
+            <!-- Картка 1: Календар НМТ 2026 -->
+            <div class="gallery-item">
+                <img src="https://duikt.edu.ua/uploads/n_15124_36743916.jpg" alt="Календар проведення НМТ 2026">
+                <div class="gallery-info">
+                    <h3>Календар проведення НМТ 2026</h3>
+                    <p>Затверджений графік: основні сесії тривають з 20 травня до 25 червня, додаткові — 17–24 липня.</p>
+                </div>
+            </div>
+
+            <!-- Картка 2: Інфографіка Дії -->
+            <div class="gallery-item">
+                <img src="https://testportal.gov.ua/wp-content/uploads/2026/03/NMT-2026_algorytm-reyestratsiyi-1086x1536.png" alt="Інфографіка реєстрації через Дію">
+                <div class="gallery-info">
+                    <h3>Реєстрація на НМТ 2026 з Дією</h3>
+                    <p>Покрокова схема створення персонального кабінету вступника через шеринг цифрових документів.</p>
+                </div>
+            </div>
+
+            <!-- Картка 3: Таблиці балів -->
+            <div class="gallery-item">
+                <img src="https://testportal.gov.ua/wp-content/uploads/2026/05/56-1536x864.jpg" alt="Таблиці відповідності балів 2026">
+                <div class="gallery-info">
+                    <h3>Шкала оцінювання 100–200 балів</h3>
+                    <p>Офіційні таблиці відповідності тестових балів рейтинговій системі оцінювання для вступу.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+<!-- Модальне вікно для збільшення картинок (початково приховане) -->
+<div id="galleryModal" class="g-modal">
+    <span class="g-close">&times;</span>
+    <img class="g-modal-content" id="modalImg">
+    <div id="modalCaption" class="g-caption"></div>
+</div>
+    <!-- Динамічний підвал завантажиться сюди -->
+    <footer id="global-footer"></footer>
+
+    <!-- Підключення скриптів (як ми налаштували для папки pages) -->
+    <script src="other/jquery-4.0.0.min.js"></script>
+    <script src="other/shared.js"></script>
+    <script src="other/scripts.js"></script>
+    </body>
+</html>
